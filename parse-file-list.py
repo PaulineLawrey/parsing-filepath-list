@@ -11,7 +11,7 @@ def process_file(input_file, output_file):
         writer = csv.writer(out_file)
 
         # Write the header row
-        writer.writerow(['OriginalFilePath', 'PathLength', 'FolderPath', 'FolderDepth', 'IsInvalidFoldername', 'IsInvalidFilename'])
+        writer.writerow(['OriginalFilePath', 'PathLength', 'FolderPath', 'FolderDepth', 'IsInvalidFoldername', 'IsInvalidFilename', 'Extension'])
 
         for line in in_file:
             # Strip trailing newlines and split at the last space character
@@ -20,7 +20,7 @@ def process_file(input_file, output_file):
 
             if last_space_index == -1:
                 # No space found, so put the entire line in the first column
-                writer.writerow([line, '', '', '', '', ''])
+                writer.writerow([line, '', '', '', '', '', ''])
             else:
                 # Split the line into two parts
                 first_part = line[:last_space_index]
@@ -34,7 +34,7 @@ def process_file(input_file, output_file):
 
                 # Check for invalid filename
                 filename = os.path.basename(first_part)
-                invalid_chars = '["*:<>?\|]'
+                invalid_chars = '["*:<>?/\\|]'
                 if re.search(invalid_chars, filename) or filename.strip() != filename:
                     invalid_filename = 'yes'
                 else:
@@ -47,8 +47,11 @@ def process_file(input_file, output_file):
                 else:
                     invalid_foldername = 'no'
 
+                # Extract file extension
+                extension = os.path.splitext(first_part)[1][1:]
+
                 # Write the parts to the CSV file
-                writer.writerow([first_part, second_part, path_without_filename, folder_depth, invalid_foldername, invalid_filename])
+                writer.writerow([first_part, second_part, path_without_filename, folder_depth, invalid_foldername, invalid_filename, extension])
 
 if __name__ == "__main__":
     process_file(INPUTFILE, OUTPUTFILE)
