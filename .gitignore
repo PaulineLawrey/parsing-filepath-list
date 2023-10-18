@@ -2,6 +2,8 @@
 .DS_Store
 .venv/
 data/
+inputs/
+outputs/
 rawdata/
 *.txt
 *.zip
