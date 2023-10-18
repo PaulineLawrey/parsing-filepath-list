@@ -2,8 +2,8 @@
 import pandas as pd
 
 # script written by Chat-GPT v4
-INPUTFILE = './data/mjs-filepaths.csv'
-OUTPUTFILE = './data/unique-folders.txt'
+INPUTFILE = './outputs/mjs-filepaths.csv'
+OUTPUTFILE = './outputs/unique-folders.txt'
 
 def get_unique_folders(input_file, output_file):
     df = pd.read_csv(input_file)
