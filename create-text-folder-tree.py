@@ -10,8 +10,8 @@ import csv
 import os
 import argparse
 
-INPUTFILE = './data/mjs-filepaths.csv'
-OUTPUTFILE = './data/folder-tree.txt'
+INPUTFILE = './raw-data/mjs-filepaths.csv'
+OUTPUTFILE = './outputs/folder-tree.txt'
 
 def generate_tree(input_file, output_file, root_path, max_depth=None, min_length=None):
     paths = set()
