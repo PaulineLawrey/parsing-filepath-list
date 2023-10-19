@@ -8,7 +8,6 @@ The two scripts to use are:
 * get-top-level-folder-stats.py
 
 The other scripts are there to get other views of the data.
-create-text-folder-tree.py isn't working, others may need to be udpated to use the 'outputs' folder rather than 'data'.
 
 All scripts have the folder names hard-coded in constants at the top of the file.
 
